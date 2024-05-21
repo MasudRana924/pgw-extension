@@ -1,0 +1,14 @@
+.popup-container {
+    width: 400px;
+    height: 500px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background-color: #f0f0f0;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    overflow-y: auto;
+  }
+  .popup-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for WebKit browsers */
+}
