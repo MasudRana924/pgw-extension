@@ -8,6 +8,8 @@ import Preloader from "./loader/Preloader";
 import VerifyOtp from "./components/auth/VerifyOtp";
 import { useSelector } from "react-redux";
 import { Navigate } from 'react-router-dom';
+import Recent from "./components/Main/Recent";
+import Search from "./components/Main/Search";
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -27,20 +29,37 @@ function App() {
       ) : (
         <div className="App">
           <Router>
-            {/* <Routes>
-              <Route path="/" element={<Login />}></Route>
-              <Route path="/main" element={<Main></Main>}></Route>
-              <Route path="/verify-otp" element={<VerifyOtp />}></Route>
-            </Routes> */}
            <Routes>
-              <Route
+              {/* <Route
                 path="/"
                 element={token ? <Navigate to="/main" /> : <Login />}
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/main"
                 element={token ? <Main /> : <Navigate to="/" />}
-              />
+              /> */}
+               {/* <Route
+                path="/"
+                element={token ? <Navigate to="/main" /> : <Login />}
+              /> */}
+              {/* <Route path="/main" element={<Main />}>
+                <Route path="recent" element={<Recent />} />
+                <Route path="search" element={<Search />} />
+              </Route> */}
+                {token ? (
+                <>
+                  <Route path="/main/*" element={<Main />}>
+                  <Route index element={<Recent />} />
+                <Route path="recent" element={<Recent />} />
+                <Route path="search" element={<Search />} />
+                  </Route>
+                  <Route path="/*" element={<Navigate to="/main/recent" />} />
+                </>
+              ) : (
+                <Route path="/*" element={<Navigate to="/login" />} />
+              )}
+              <Route path="/login" element={<Login />} />
+
               <Route path="/verify-otp" element={<VerifyOtp />} />
             </Routes>
           </Router>
